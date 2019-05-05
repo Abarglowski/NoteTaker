@@ -18,7 +18,7 @@ router.post("/api/notes", function(req, res) {
 router.delete("/api/notes", function(req, res) {
   console.log(res);
   connection.query(
-    "DELETE FROM 'notes' WHERE ?",
+    "DELETE FROM notes WHERE ?",
     [req.param.id],
     function(err, result) {
     if (err) throw err;

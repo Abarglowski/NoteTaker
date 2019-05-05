@@ -30,16 +30,15 @@ var runTableQuery = function() {
   $.ajax({
     url: "/api/notes",
     method: "GET"
-  }).then(function(tableData) {
-    // Loop through and display each of the customers
-    for (var i = 0; i < tableData.length; i++) {
+  }).then(function(noteData) {
+    for (var i = 0; i < noteData.length; i++) {
       var $listItem = $("<li class='list-group-item mt-4'>");
 
       $listItem.append(
-        $("<h2>").text(tableData[i].title),
+        $("<h2>").text(noteData[i].title),
         $("<hr>"),
-        $("<h2>").text(tableData[i].body),
-        $("<button type='submit' class='float-right text-danger delete'>delete note</button>")
+        $("<h2>").text(noteData[i].body),
+        $("<button class='float-right text-danger delete'>delete note</button>")
       );
 
       $noteList.append($listItem);
