@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Notetaker</title>
+
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="fa fa-fire"></span>Note Taker</h1>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Reservation Page -->
+          <div class="card">
+            <div class="card-header">
+              Make a note
+            </div>
+            <div class="card-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="note-title">Note title</label>
+                  <input type="text" class="form-control" id="note-title">
+                </div>
+                <div class="form-group">
+                  <label for="note-text">Note text</label>
+                  <input type="text" class="form-control" id="note-text">
+                </div>
+                <button type="submit" class="btn btn-primary submit">Save Note</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="/" class="btn btn-lg btn-primary"><span class="fa fa-home"></span></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card">
+          <div class="card-header">
+            <h4>Notes</h4>
+          </div>
+          <div class="card-body">
+            <ul id="noteList" class="list-group"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="/assets/js/notes.js"></script>
+</html>
