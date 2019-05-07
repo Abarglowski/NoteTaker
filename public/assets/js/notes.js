@@ -1,6 +1,6 @@
 var $noteList = $("#noteList");
-var $deleteBtn = $(".delete");
 var $submitBtn = $(".submit");
+var $deleteBtn = $(".delete");
 
 var handleSubmitClick = function(event) {
   event.preventDefault();
@@ -26,7 +26,7 @@ var handleSubmitClick = function(event) {
   );
 };
 
-var runTableQuery = function() {
+var runNoteQuery = function() {
   $.ajax({
     url: "/api/notes",
     method: "GET"
@@ -38,7 +38,7 @@ var runTableQuery = function() {
         $("<h2>").text(noteData[i].title),
         $("<hr>"),
         $("<h2>").text(noteData[i].body),
-        $("<button class='float-right text-danger delete'>delete note</button>")
+        $("<button class='float-right text-danger delete' data-id=" + noteData[i].id + ">delete note</button>")
       );
 
       $noteList.append($listItem);
@@ -46,23 +46,19 @@ var runTableQuery = function() {
   });
 };
 
-var deleteNotes = function() {
-  console.log("we got here");
-
+var deleteNote = function() {
+  const noteId = $(this).attr("data-id");
   $.ajax({
-    url: "/api/notes",
+    url: "/api/notes/" + noteId,
     method: "DELETE" 
-  }).then(function(err, res) {
-    if(err) throw err;
-    console.log(res);
-    runTableQuery();
+  }).then(function() {
+    console.log("deleted note");
+    $("#noteList").empty();
+    runNoteQuery();
   });
 };
 
-
-$deleteBtn.on("click", deleteNotes);
 $submitBtn.on("click", handleSubmitClick);
+$(document).on("click", ".delete", deleteNote);
+runNoteQuery();
 
-// Run Queries!
-// ==========================================
-runTableQuery();
